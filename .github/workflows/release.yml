@@ -1,16 +1,13 @@
 name: github release
-
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  workflow_run:
+    workflows: [CMake on multiple platforms]
+    types: [completed]
 
 jobs:
-  release:
+  on-success:
     runs-on: ubuntu-latest
-    needs: build
-
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
     - name: Download artifacts
       uses: actions/download-artifact@v3
