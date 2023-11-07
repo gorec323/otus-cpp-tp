@@ -57,7 +57,7 @@ jobs:
         echo "build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
 
     - name: Install linux libs
-      if: ${{ ${{ matrix.os }} == 'ubuntu-latest' }}
+      if: ${{ matrix.os == 'ubuntu-latest' }}
       run: echo "os=${{ matrix.os }}" && sudo apt update && sudo apt install libgtest-dev -y
 
     - name: Configure CMake
