@@ -57,8 +57,8 @@ jobs:
         echo "build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
 
     - name: Install linux libs
-      if: ${{ matrix.os }} == ubuntu-latest
-      run: sudo apt update && sudo apt install libgtest-dev -y
+      if: ${{ matrix.os }} == 'ubuntu-latest'
+      run: echo "os=${{ matrix.os }}" && sudo apt update && sudo apt install libgtest-dev -y
 
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
